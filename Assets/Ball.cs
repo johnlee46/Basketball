@@ -6,30 +6,38 @@ public class Ball : MonoBehaviour
 {
 
     public GameObject ball;
-    public GameObject playerCamera;
+    private GameObject playerCamera;
 
     private bool holdingBall = true;
     public float force = 2000f;
 
     private Vector3 screenPoint;
     private Vector3 offset;
+
+    public float forwardForce = 15.0f;
+
+
     // Use this for initialization
     void Start()
     {
         GetComponent<Rigidbody>().useGravity = false;
+        playerCamera = GameObject.FindGameObjectWithTag("MainCamera");
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (holdingBall)
         {
-            ball.transform.position = playerCamera.transform.position + playerCamera.transform.forward * 4;
+            ball.transform.position = playerCamera.transform.position + playerCamera.transform.forward * forwardForce;
             if (Input.GetMouseButtonDown(0))
             {
                 holdingBall = false;
                 ball.GetComponent<Rigidbody>().useGravity = true;
-                //ball.GetComponent<Rigidbody>().AddForce(playerCamera.transform.forward * force);
+                ball.GetComponent<Rigidbody>().AddForce(playerCamera.transform.forward * force);
+
             }
         }
 
