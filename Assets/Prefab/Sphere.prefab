@@ -114,9 +114,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 1857405318792792}
-  playerCamera: {fileID: 0}
-  force: 2000
-  waitTime: 5
+  force: 500
+  forwardForce: 15
 --- !u!114 &114480654525872072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,8 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0387d5d0ef75fff42865ebcc9d28ce6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoop: {fileID: 0}
+  hoop: {fileID: 100002, guid: 1c4b815bfbc305d42b5ba631087310e6, type: 3}
+  ball: {fileID: 1857405318792792}
   speed: 5
+  time: 0
 --- !u!135 &135730514127801034
 SphereCollider:
   m_ObjectHideFlags: 1
