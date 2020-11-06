@@ -6,6 +6,7 @@ public class Ball : MonoBehaviour
 {
 
     public GameObject ball;
+    public GameObject target;
     private GameObject playerCamera;
 
     private bool holdingBall = true;
@@ -13,8 +14,8 @@ public class Ball : MonoBehaviour
 
     private Vector3 screenPoint;
     private Vector3 offset;
-
-    public float forwardForce = 15.0f;
+    private Vector3 velocity;
+    public float forwardPosition = 15.0f;
 
 
     // Use this for initialization
@@ -31,12 +32,15 @@ public class Ball : MonoBehaviour
         
         if (holdingBall)
         {
-            ball.transform.position = playerCamera.transform.position + playerCamera.transform.forward * forwardForce;
+            ball.transform.position = playerCamera.transform.position + playerCamera.transform.forward * forwardPosition;
             if (Input.GetMouseButtonDown(0))
             {
                 holdingBall = false;
                 ball.GetComponent<Rigidbody>().useGravity = true;
-                ball.GetComponent<Rigidbody>().AddForce(playerCamera.transform.forward * force);
+                //Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                //velocity = new Vector3(touchPosition.x, touchPosition.y, transform.position.z) - transform.position;
+                //ball.GetComponent<Rigidbody>().AddForce(velocity * force);
+                //ball.GetComponent<Rigidbody>().AddForce(playerCamera.transform.forward * force);
 
             }
         }
@@ -58,7 +62,11 @@ public class Ball : MonoBehaviour
     //when player release the mouse to flick or / touch if mobile
     void OnMouseUp()
     {
-
+        Debug.Log(transform.position);
+        Debug.Log(GameObject.FindGameObjectWithTag("target").transform.position);
+        var dir = GameObject.FindGameObjectWithTag("target").transform.position - transform.position;
+        dir = dir.normalized;
+        ball.GetComponent<Rigidbody>().AddForce(dir*force);
     }
 
 }

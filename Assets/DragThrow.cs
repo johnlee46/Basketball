@@ -24,7 +24,7 @@ public class DragThrow : MonoBehaviour
     private void Update()
     {
         time += Time.deltaTime;
-        Debug.Log(time.ToString());
+        //Debug.Log(time.ToString());
         if (time > 5.0f)
         {
             if(currentBall != null)
@@ -55,6 +55,7 @@ public class DragThrow : MonoBehaviour
     {
         mouseSpeed = (oldMouse - Input.mousePosition);
         rigidbody.AddForce(mouseSpeed * speed * -1, ForceMode.Force);
+        rigidbody.AddTorque(100, 0,0);
 
     }
 }
