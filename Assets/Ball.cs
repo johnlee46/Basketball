@@ -11,6 +11,7 @@ public class Ball : MonoBehaviour
 
     private bool holdingBall = true;
     public float force = 2000f;
+    public float arc = 1000f;
 
     private Vector3 screenPoint;
     private Vector3 offset;
@@ -62,11 +63,13 @@ public class Ball : MonoBehaviour
     //when player release the mouse to flick or / touch if mobile
     void OnMouseUp()
     {
-        Debug.Log(transform.position);
         Debug.Log(GameObject.FindGameObjectWithTag("target").transform.position);
         var dir = GameObject.FindGameObjectWithTag("target").transform.position - transform.position;
+        var flip = new Vector3(1, -1, 1);
+        dir = Vector3.Scale(dir, flip);
         dir = dir.normalized;
         ball.GetComponent<Rigidbody>().AddForce(dir*force);
+        ball.GetComponent<Rigidbody>().AddForce(playerCamera.transform.up * arc);
     }
 
 }

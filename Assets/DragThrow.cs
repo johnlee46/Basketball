@@ -54,7 +54,7 @@ public class DragThrow : MonoBehaviour
     void OnMouseUp()
     {
         mouseSpeed = (oldMouse - Input.mousePosition);
-        rigidbody.AddForce(mouseSpeed * speed * -1, ForceMode.Force);
+        //rigidbody.AddForce(mouseSpeed * speed * -1, ForceMode.Force);
         rigidbody.AddTorque(100, 0,0);
 
     }

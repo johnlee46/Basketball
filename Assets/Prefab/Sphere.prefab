@@ -115,7 +115,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 1857405318792792}
   target: {fileID: 100002, guid: 1c4b815bfbc305d42b5ba631087310e6, type: 3}
-  force: 1000
+  force: 500
+  arc: 1500
   forwardPosition: 15
 --- !u!114 &114480654525872072
 MonoBehaviour:
