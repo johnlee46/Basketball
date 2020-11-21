@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Ball.cs" />
+    <Compile Include="Assets\Defender.cs" />
     <Compile Include="Assets\DragThrow.cs" />
     <Compile Include="Assets\ThroughHoop.cs" />
     <Reference Include="Unity.ProBuilder.AddOns.Editor">
